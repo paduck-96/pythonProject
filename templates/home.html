@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{%block content%}
+<div class="ui container" style="text-align:center; margin-top:50px; ">
+    <h2>당신의 습관 형성에 도움이 되는 프로그램</h2>
+{% if notify %}
+  {% for routin in routin_list %}
+  <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="toast-header">
+    <strong class="me-auto">{{routin.title}}</strong>
+  </div>
+  <div class="toast-body" style="color:white">
+    {{notify}}
+  </div>
+</div>
+  {% endfor %}
+{% endif %}
+</div>
+<div class="ui container" style="margin-top:50px">
+  <div class="ui top attached tabular menu">
+  <a class="item active" href="/">
+    할 일
+  </a>
+  <a class="item" href="/routin">
+    루틴
+  </a>
+</div>
+<div class="ui bottom attached segment">
+  <div style="margin-top:50px;" class="ui container">
+      <form class="ui form" action="/add" method="post">
+      <div class="field">
+        <label for="title" class="form-label mt-4">할 일</label>
+        <input type="text" class="form-control" id="title" aria-describedby="todoHelp" name="title" placeholder="할 일...">
+        <small id="todoHelp" class="form-text text-muted">루틴을 작성하시면 안됩니다</small>
+        <button id="button-addon2" class="ui button btn btn-primary" type="submit">작성</button>
+      </div>
+      </form>
+      <div class="ui segment">
+        {% if todo_list == [] %}
+        <p class="ui big header "> 일정이 없습니다 </p>
+        {% endif%}
+        {% for todo in todo_list %}
+        <div style="display:flex">
+        <p class="ui big header "id={{todo.id}}> {{ todo.title}}</p>
+        {% if todo.complete == False %}
+        <span class="badge sg-light">Not Complete</span>
+        {% else %}
+        <span class="badge sg-light">Complete</span>
+        {% endif %} 
+        </div>
+        {% if todo.complete == False %}
+        <a class="badge bg-success" href="/update/{{todo.id}}">완료</a>
+        {% else %}
+        <a class="badge bg-success" href="/update/{{todo.id}}">미완료</a>
+        {%endif%}
+        <a class="badge bg-warning" href="/editing/{{todo.id}}">수정</a>
+        <a class="badge bg-danger" href="/delete/{{todo.id}}">삭제</a>
+        {% endfor %}
+      </div>
+  </div>
+</div>
+<div class="ui two item menu">
+    <a id="home" class="item active" href="/">
+      항목 작성
+    </a>
+    <a id="prog" class="item" href="/progress">
+      진행사항
+    </a>
+</div>
+</div>
+    {%endblock%}

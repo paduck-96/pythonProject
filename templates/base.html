@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="refresh" content="30">
+    <title>리추얼라이프app</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/darkly/bootstrap.min.css" integrity="sha384-nNK9n28pDUDDgIiIqZ/MiyO3F4/9vsMtReZK39klb/MtkZI3/LtjSjlmyVPS3KdN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js">
+</script>
+</head>
+<body>
+{% with messages = get_flashed_messages(category_filter=["notify"]) %}
+  {% if messages %}
+    <script>
+    {% for message in messages %}
+      alert("{{message}}")
+    {% endfor %}
+    </script>
+  {% endif %}
+{% endwith %}
+{%block content%}
+  {%endblock%}
+</body>
+</html>

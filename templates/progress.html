@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{%block content%}
+<div class="ui container" style="text-align:center; margin-top:50px; ">
+    <h2>당신의 습관 형성에 도움이 되는 프로그램</h2>
+{% if notify %}
+  {% for routin in routinList %}
+  <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="toast-header">
+    <strong class="me-auto">{{routin.title}}</strong>
+    <button type="button" class="btn-close ms-2 mb-1" data-bs-dismiss="toast" aria-label="Close">
+      <span aria-hidden="true"></span>
+    </button>
+  </div>
+  <div class="toast-body">
+    {{notify}}
+  </div>
+</div>
+  {% endfor %}
+{% endif %}
+</div>
+<div class="ui container" style="margin-top:50px">
+<div class="ui segment">
+    <div style="margin-top:50px;" class="ui container">
+      {% if routinList == [] %}
+        <p class="ui big header "> 진행되고 있는 루틴이 없습니다 </p>
+      {% endif%}
+      {% for routin in routinList %}
+      <div>
+          <span class="ui big header "id={{routin.id}}> {{routin.title}} </span>
+            {% if routin.complete == False %}
+            <span class="badge bg-light">미달성</span>
+            {% else %}
+            <span class="badge bg-light">달성</span>
+            {% endif %} 
+      </div>
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="{{routin.per}}" aria-valuemin="0" aria-valuemax="100" style="width: {{routin.per}}%;">
+        </div>
+      </div>
+              {% endfor %}
+    </div>
+</div>
+<div class="ui two item menu">
+    <a id="home" class="item" href="/">
+      항목 작성
+    </a>
+    <a id="prog" class="item active" href="/progress">
+      진행사항
+    </a>
+</div>
+</div>
+{%endblock%}
