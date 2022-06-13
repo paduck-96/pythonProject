@@ -56,8 +56,7 @@ def todos():
             "09:00:00"<=alarmTime<"09:01:00" or 
             "12:00:00"<=alarmTime<"12:01:00" or 
             "18:00:00"<=alarmTime<"18:01:00" or 
-            "22:00:00"<=alarmTime<"22:01:00" or
-            "13:38:00"<=alarmTime<"13:40:00"):
+            "22:00:00"<=alarmTime<"22:01:00" ):
             flash("알림을 확인해주세요", "notify")
             notify = notify_msg[random.randrange(0, len(notify_msg))]
             return render_template('home.html', todo_list=todo_list,  
@@ -94,8 +93,7 @@ def editing(todo_id):
             "09:00:00"<=alarmTime<"09:01:00" or 
             "12:00:00"<=alarmTime<"12:01:00" or 
             "18:00:00"<=alarmTime<"18:01:00" or 
-            "22:00:00"<=alarmTime<"22:01:00" or
-            "13:38:00"<=alarmTime<"13:40:00"):
+            "22:00:00"<=alarmTime<"22:01:00"):
             flash("알림을 확인해주세요", "notify")
             notify = notify_msg[random.randrange(0, len(notify_msg))]
             return render_template('edit.html', todo=todo, routin_list=routin_list, notify = notify)
@@ -140,8 +138,7 @@ def routin():
             "09:00:00"<=alarmTime<"09:01:00" or 
             "12:00:00"<=alarmTime<"12:01:00" or 
             "18:00:00"<=alarmTime<"18:01:00" or 
-            "22:00:00"<=alarmTime<"22:01:00" or
-            "13:38:00"<=alarmTime<"13:40:00"):
+            "22:00:00"<=alarmTime<"22:01:00"):
             flash("알림을 확인해주세요", "notify")
             notify = notify_msg[random.randrange(0, len(notify_msg))]
             return render_template('routin.html', routinList=routinList, notify = notify)
@@ -177,8 +174,7 @@ def rEditing(routin_id):
             "09:00:00"<=alarmTime<"09:01:00" or 
             "12:00:00"<=alarmTime<"12:01:00" or 
             "18:00:00"<=alarmTime<"18:01:00" or 
-            "22:00:00"<=alarmTime<"22:01:00" or
-            "13:38:00"<=alarmTime<"13:40:00"):
+            "22:00:00"<=alarmTime<"22:01:00"):
             flash("알림을 확인해주세요", "notify")
             notify = notify_msg[random.randrange(0, len(notify_msg))]
             return render_template('redit.html', routin=routin, routin_list=routin_list, notify = notify)
@@ -226,8 +222,7 @@ def precent():
               "09:00:00"<=alarmTime<"09:01:00" or 
               "12:00:00"<=alarmTime<"12:01:00" or 
               "18:00:00"<=alarmTime<"18:01:00" or 
-              "22:00:00"<=alarmTime<"22:01:00" or
-              "13:38:00"<=alarmTime<"13:40:00"):
+              "22:00:00"<=alarmTime<"22:01:00"):
               flash("알림을 확인해주세요", "notify")
               notify = notify_msg[random.randrange(0, len(notify_msg))]
               return render_template('progress.html', routinList=routinList, notify = notify)
